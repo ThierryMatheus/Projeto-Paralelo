@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body{
+    background: violet;
+  }
+.item1 { grid-area: header; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
+.item4 { grid-area: footer; }
+.item5 { grid-area: chat; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'menu main main main chat chat'
+    'menu footer footer footer chat chat';
+  grid-gap: 10px;
+  background-color: purple;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+}
+</style>
+</head>
+<body>
+
+
+<div class="grid-container">
+  <div class="item1">Adedonha</div>
+  <div class="item2">Ranking</div>
+  <div class="item3">Letra 'A'</div>  
+  <div class="item4">
+  <form action="#">
+  <input type="text" id="nome"placeholder="nome"></input>
+  <input type="text" id="lugar"placeholder="lugar"></input>
+  <input type="text" id="animal"placeholder="animal"></input>
+  <input type="text" id="carro"placeholder="carro"></input>
+  <input type="text" id="filme"placeholder="filme"></input>
+  <input type="text" id="fruta"placeholder="fruta"></input>
+  <input type="text" id="objeto"placeholder="objeto"></input>
+  <input type="text" id="PCH"placeholder="P.C.H"></input><br>
+  <input type="submit"></input>
+  </form>
+  </div>
+  <div class="item5">
+    chat
+    <div style="background-color: #000; font: #fff;">
+     <h1> conversas</h1>
+    </div>
+  </div>
+
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var socket = io.connect('http://localhost:3000');
+//    var nome = prompt( 'Insira seu nome!!')
+//    socket.emit('nome', nome);
+    console.log(socket)
+</script>
+</html>
