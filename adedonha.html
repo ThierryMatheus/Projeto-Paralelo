@@ -29,11 +29,12 @@
   font-size: 30px;
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 <body>
 
-
-<div class="grid-container">
+<div id="app">
+  <div class="grid-container">
   <div class="item1">Adedonha</div>
   <div class="item2">Ranking</div>
   <div class="item3">Letra 'A'</div>  
@@ -52,19 +53,57 @@
   </div>
   <div class="item5">
     chat
-    <div style="background-color: #000; font: #fff;">
      <h1> conversas</h1>
     </div>
   </div>
-
+</div>
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script>
     var socket = io.connect('http://localhost:3000');
-//    var nome = prompt( 'Insira seu nome!!')
-//    socket.emit('nome', nome);
+    var nome = prompt( 'Insira seu nome!!')
+    socket.emit('nome', nome);
     console.log(socket)
-</script>
+    var players = []
+
+    socket.on('players', (data) => {
+      while (players.length) players.pop();
+      Object.keys(data).map(id => {
+        // console.log(data[id])
+        var player = {
+          id: id,
+        }
+        players.push(player)
+      })
+    })
+      const Player = {
+      name: "Player",
+      props: ['id'],
+      points: 0,
+      created () {
+      },
+      methods: {
+        
+      },
+      mounted () {
+  
+      },
+    }
+   const vm = new Vue({
+      el: "#app",
+      data: {
+      //  myId: 0,
+        players: players,
+      },
+    mounted(){
+
+    }
+    methods(){
+
+    }
+    components: {
+        Player
+      }
+    })</script>
 </html>
