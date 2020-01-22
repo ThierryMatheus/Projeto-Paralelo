@@ -30,8 +30,29 @@
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script type="text/javascript">
+    var count=new Number();
+    var count=5;
+
+    function start(){
+      if((count -1) >= 0){
+        count = count -1;
+        if (count==0) {
+          count = "Fim!";
+//          get.ElementById("enviar") = true;
+        }else if (count < 100 && count >= 10) {
+          count = "0"+count;
+        }
+        else if (count < 10) {
+          count = "00"+count;
+        }
+        Tempo.innerText=count;
+        setTimeout('start();',1000)
+      }
+    }
+  </script>
 </head>
-<body>
+<body onload="start();">
 
 <div id="app">
   <div class="grid-container">
@@ -48,12 +69,12 @@
   <input type="text" id="fruta"placeholder="fruta"></input>
   <input type="text" id="objeto"placeholder="objeto"></input>
   <input type="text" id="PCH"placeholder="P.C.H"></input><br>
-  <input type="submit"></input>
+  <input type="submit" id="enviar"></input>
   </form>
   </div>
   <div class="item5">
-    chat
-     <h1> conversas</h1>
+    Tempo!!
+     <h1 id="Tempo"></h1>
     </div>
   </div>
 </div>
